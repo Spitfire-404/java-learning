@@ -17,10 +17,13 @@ public class renderer {
     }
     
     public renderer(int width, int height) {
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(width, height);
-        frame.setVisible(true);
-    }
+    frame = new JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(width, height);
+    frame.setVisible(true);
+    
+    // Initialize g2d
+    g2d = (Graphics2D) frame.getGraphics();
+}
 
 }
