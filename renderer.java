@@ -1,29 +1,24 @@
 // stuff for jframes?
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.*;
+import java.awt.*;
 import javax.swing.*;
 
-public class renderer {
-    private JFrame frame;
-    private Graphics2D g2d;
-    private Graphics g;
+public class renderer extends JFrame {
 
-    public void drawline(int x1, int y1, int x2, int y2) {
-        g2d.setColor(Color.BLUE);
-        Rectangle2D line = new Rectangle2D.Double(x1, y1, x2, y2);
-        g2d.fill(line);
+    renderer(int width, int height) {
+        super("window");
+        setSize(480, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
-    
-    public renderer(int width, int height) {
-    frame = new JFrame();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(width, height);
-    frame.setVisible(true);
-    
-    // Initialize g2d
-    g2d = (Graphics2D) frame.getGraphics();
-}
 
+    void drawline(int x1, int y1, int x2, int y2) {
+        g2d.drawLine(x1, y1, x2, y2);
+    }
+    public Graphics2D g2d;
+    public void paint(Graphics g, int x1, int y1, int x2, int y2) {
+        g2d = (Graphics2D) g;
+
+        g2d.drawLine(x1, y1, x2, y2);
+    }
 }
