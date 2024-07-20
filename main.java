@@ -6,6 +6,8 @@ public class main {
     }
     private static void init() {
         renderer window = new renderer(800, 600); // make a new window
-        window.paint(window.g2d, 10, 10, 300, 300);
+        window.draw(new int[]{10, 10, 300, 300,0,100});
+        window.draw(new int[]{300, 300,0,100});
+        
     }
 }

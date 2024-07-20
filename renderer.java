@@ -2,7 +2,7 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class renderer extends JFrame {
+public class renderer extends JFrame{
 
     renderer(int width, int height) {
         super("window");
@@ -11,14 +11,19 @@ public class renderer extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-    void drawline(int x1, int y1, int x2, int y2) {
-        g2d.drawLine(x1, y1, x2, y2);
-    }
+    private int[] points;
     public Graphics2D g2d;
-    public void paint(Graphics g, int x1, int y1, int x2, int y2) {
+    public void paint(Graphics g) {
+        super.paint(g);
         g2d = (Graphics2D) g;
 
-        g2d.drawLine(x1, y1, x2, y2);
+        for(int i = 0; i < points.length; i += 2) {
+            g2d.drawLine(points[i], points[i+1], points[i+2], points[i+3]);
+        }
+}
+    void draw(int[] pointsToDraw) {
+        points = pointsToDraw;
+        repaint();
     }
+
 }
