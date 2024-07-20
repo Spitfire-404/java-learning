@@ -5,6 +5,7 @@ public class main {
         init();
     }
     private static void init() {
-        renderer renderer = new renderer(800, 600); // make a new window
+        renderer window = new renderer(800, 600); // make a new window
+        window.drawline(10, 10,300,300);
     }
 }
