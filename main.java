@@ -8,3 +8,4 @@ public class main {
         renderer renderer = new renderer(800, 600); // make a new window
     }
 }
+
