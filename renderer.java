@@ -1,5 +1,6 @@
 // stuff for jframes?
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,10 +26,6 @@ public class renderer extends JFrame{
         super.paint(g);
         g2d = (Graphics2D) g;
 
-        for(int i = 0; i < points.length; i += 2) {
-            g2d.drawLine(points[i], points[i+1], points[i+2], points[i+3]);
-        }
-            g.drawImage(img, 0,0, this);
 }
     void drawPoly(int[] pointsToDraw) {
         points = pointsToDraw;
@@ -39,14 +36,7 @@ public class renderer extends JFrame{
         repaint();
     }
 
-    Image img;
     private void loadImg() {
-        try{
-            img = ImageIO.read(new File("Chad.jpg"));// new ImageIcon("Chad.jpg").getImage();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
         //return img;
     }
 
