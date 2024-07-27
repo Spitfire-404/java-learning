@@ -1,8 +1,6 @@
 // stuff for jframes?
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class renderer extends JFrame{
@@ -20,19 +18,20 @@ public class renderer extends JFrame{
         loadImg();
     }
     private int[] points;
-    private ImageIcon[] images;
     public Graphics2D g2d;
     public void paint(Graphics g) {
         super.paint(g);
         g2d = (Graphics2D) g;
+        
 
 }
     void drawPoly(int[] pointsToDraw) {
         points = pointsToDraw;
         repaint();
     }
-    void drawImg(ImageIcon[] imagesToDraw) {
-        images = imagesToDraw;
+    BufferedImage[] images;
+    void drawImg(BufferedImage[] imagesToDraw) {
+        this.images = imagesToDraw;
         repaint();
     }
 
