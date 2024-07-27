@@ -1,13 +1,21 @@
 // main java file
+
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.*;
+
 public class main { 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Hello, World!");
-        init();
+        init(); 
     }
-    private static void init() {
-        renderer window = new renderer(800, 600); // make a new window
-        window.draw(new int[]{10, 10, 300, 300,0,100});
-        window.draw(new int[]{300, 300,0,100});
-        
+    private static void init() throws IOException {
+        BufferedImage img = ImageIO.read(new File("Chad.jpg"));// choose an image to draw
+        renderer renderer = new renderer(800, 600); // make a new window
+//                                                                                    |                                                                     |
+//                                                                                    v NOTE: think of input as a buffer, any previous input is overwritten v
+        renderer.drawImg(new BufferedImage[]{img, img}, new int[][]{{0,0},{300,300}}); // draw the image (first an image array, second an array of positions)
+        renderer.drawPoly(new int[]{100, 100, 200, 100, 200, 200, 100, 200, 100, 100}); // draw lines
+        renderer.refresh();// manually call the repaint method
     }
 }
