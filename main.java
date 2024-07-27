@@ -1,11 +1,9 @@
 // main java file
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.*;
-import javax.swing.JPanel;
 
 public class main { 
     public static void main(String[] args) throws IOException {
@@ -16,16 +14,13 @@ public class main {
         
     }
     private static void init() throws IOException {
-        final BufferedImage img = ImageIO.read(new File("Chad.jpg"));// new ImageIcon("Chad.jpg").getImage();
+        BufferedImage img = ImageIO.read(new File("Chad.jpg"));// choose an image to draw
         renderer renderer = new renderer(800, 600); // make a new window
-        JPanel pane = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(img, 0, 0, null);
-            }
-        };
-        renderer.add(pane);
+        //                                                                             |                                                                     |
+        //                                                                             v NOTE: think of input as a buffer, any previous input is overwritten v
+        renderer.drawImg(new BufferedImage[]{img, img}, new int[][]{{0,0},{300,300}}); // draw the image
+        renderer.drawPoly(new int[]{100, 100, 200, 100, 200, 200, 100, 200, 100, 100}); // draw lines
         renderer.setVisible(true);
+        renderer.refresh();
     }
 }
