@@ -25,6 +25,8 @@ public class renderer extends JFrame{
     // override the paint method
     @Override
     public void paint(Graphics g) {
+        setSize(width, height); // reset the size of the window
+        
         super.paint(g); // call the paint method of the super class
         g2d = (Graphics2D) g; // cast the graphics object to a graphics 2d object
         
