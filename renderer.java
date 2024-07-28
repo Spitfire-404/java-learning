@@ -2,6 +2,9 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class renderer extends Frame{
 
@@ -60,6 +63,10 @@ public class renderer extends Frame{
                 }
                 repaint();
             }
+
+            if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {// exit the program
+                System.exit(0);
+            }
         }
     };
 
@@ -69,16 +76,17 @@ public class renderer extends Frame{
     final private int height;
 
     // constructor
-    renderer(int width, int height) {
+    renderer(int width, int height) throws IOException {
         super("window");//use the jframe constructor to create and name the window
         this.width = width; // set the width
         this.height = height; // set the height
         setSize(width, height); // set the size of the window
         setResizable(false); // make the window not resizable
         setLocationRelativeTo(null); // set the window in the middle of the screen
+        setIconImage(ImageIO.read(new File("Chad.jpg"))); // set the icon of the window
         setVisible(true); // make the window visible
 
-        addKeyListener(keyAdapter);
+        addKeyListener(keyAdapter);// add the key listener
     }
 
     private int[] points; // points to draw
