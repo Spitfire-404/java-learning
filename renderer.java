@@ -1,12 +1,45 @@
 // stuff for jframes?
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 public class renderer extends JFrame{
+
+    // creating a keyadapter object to listen for key events
+    KeyAdapter keyAdapter = new KeyAdapter() {
+
+        // override the keypressed method(allow us to do things with keys are pressed)
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println(e.getKeyCode());
+            if(e.getKeyCode() == KeyEvent.VK_R) {// call the repaint method
+                repaint();
+            }
+
+            if(e.getKeyCode() == KeyEvent.VK_W) {// up
+                imagesPos[0][1] -= 10;
+                repaint();
+            }
+            if(e.getKeyCode() == KeyEvent.VK_S) {// down
+                imagesPos[0][1] += 10;
+                repaint();
+            }
+            if(e.getKeyCode() == KeyEvent.VK_A) {// left
+                imagesPos[0][0] -= 10;
+                repaint();
+            }
+            if(e.getKeyCode() == KeyEvent.VK_D) {// right
+                imagesPos[0][0] += 10;
+                repaint();
+            }
+        }
+    };
+
+
     // width and height of the window for reference
-    private int width;
-    private int height;
+    final private int width;
+    final private int height;
 
     // constructor
     renderer(int width, int height) {
@@ -17,6 +50,8 @@ public class renderer extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ???
         setLocationRelativeTo(null); // set the window in the middle of the screen
         setVisible(true); // make the window visible
+
+        this.addKeyListener(keyAdapter);
     }
 
     private int[] points; // points to draw
@@ -62,5 +97,4 @@ public class renderer extends JFrame{
     void refresh() {
         repaint(); // call the repaint method
     }
-
 }

@@ -14,7 +14,7 @@ public class main {
         renderer renderer = new renderer(800, 600); // make a new window
 //                                                                                    |                                                                     |
 //                                                                                    v NOTE: think of input as a buffer, any previous input is overwritten v
-        renderer.drawImg(new BufferedImage[]{img, img}, new int[][]{{0,0},{300,300}}); // draw the image (first an image array, second an array of positions)
+        renderer.drawImg(new BufferedImage[]{img}, new int[][]{{0,0}}); // draw the image (first an image array, second an array of positions)
         renderer.drawPoly(new int[]{100, 100, 200, 100, 200, 200, 100, 200, 100, 100}); // draw lines
         renderer.refresh();// manually call the repaint method
     }
